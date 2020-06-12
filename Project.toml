@@ -25,6 +25,7 @@ SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
 SparseDiffTools = "47a9eef4-7e08-11e9-0b38-333d64bd3804"
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 UnPack = "3a884ed6-31ef-47d7-9d2a-63182c4928ed"
+VectorizedRNG = "33b4df10-0173-11e9-2a0c-851a7edac40e"
 
 [compat]
 ArrayInterface = "2.4"

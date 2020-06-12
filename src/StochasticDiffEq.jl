@@ -20,6 +20,8 @@ module StochasticDiffEq
 
   import RecursiveArrayTools: chain
 
+  import VectorizedRNG
+
   using Logging, SparseArrays
 
   using LinearAlgebra, Random, FillArrays
