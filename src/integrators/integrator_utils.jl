@@ -260,16 +260,19 @@ end
   end
 end
 
-@inline function handle_callback_modifiers!(integrator::SDEIntegrator)
+function handle_callback_modifiers!(integrator::SDEIntegrator)
   #integrator.reeval_fsal = true
   if integrator.P !== nothing && integrator.opts.adaptive
-    if typeof(integrator.cache) <: StochasticDiffEqMutableCache
+    if integrator.cache isa StochasticDiffEqMutableCache
       oldrate = integrator.P.cache.currate
-      P.cache.rate(oldrate,u,p,t)
+      integrator.P.cache.rate(oldrate, integrator.u, integrator.p, integrator.t)
     else
-      integrator.P.cache.currate = P.cache.rate(u,p,t)
+      integrator.P.cache.currate = integrator.P.cache.rate(
+        integrator.u, integrator.p, integrator.t
+      )
     end
   end
+  nothing
 end
 
 @inline function apply_step!(integrator)
