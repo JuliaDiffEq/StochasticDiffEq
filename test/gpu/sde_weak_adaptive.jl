@@ -36,14 +36,14 @@ h1(z) = z^3-6*z^2+8*z
 
 function f1!(du,u,p,t)
  @inbounds begin
-     du[1] = 1//2*u[1]+sqrt(u[1]^2 +1)
+     du[1] = 1/2*u[1]+sqrt(u[1]^2 +1)
  end
  nothing
 end
 
 function g1!(du,u,p,t)
  @inbounds begin
-     du[1] = sqrt(u[1]^2 +1)
+     du[1] = sqrt(u[1]^2.0 +1)
  end
  nothing
 end
