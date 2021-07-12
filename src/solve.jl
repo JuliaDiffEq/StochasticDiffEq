@@ -484,7 +484,9 @@ function DiffEqBase.__init(
   end
 
   if controller === nothing
-    controller = default_controller(alg, cache, QT(qoldinit), beta1, beta2)
+    controller = default_controller(_alg, cache, convert(QT,qoldinit),
+                                    beta1 === nothing ? nothing : convert(QT,beta1),
+                                    beta2 === nothing ? nothing : convert(QT,beta2))
   end
 
   opts = SDEOptions(maxiters,save_everystep,
