@@ -272,7 +272,14 @@ function DiffEqBase.__init(
     saveiter = 0
   end
 
-  QT = tTypeNoUnits <: Integer ? typeof(qmin) : tTypeNoUnits
+  QT = if tTypeNoUnits <: Union{Integer,AbstractFloat}
+    typeof(qmin)
+  elseif prob isa DiscreteProblem
+    # The QT fields are not used for DiscreteProblems
+    constvalue(tTypeNoUnits)
+  else
+    typeof(internalnorm(u, t))
+  end
 
   uprev = recursivecopy(u)
 
